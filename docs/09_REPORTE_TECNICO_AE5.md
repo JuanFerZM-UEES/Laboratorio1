@@ -53,7 +53,7 @@ Las 7 pruebas de caracterización construidas en el Laboratorio 2 (`ServicioRese
 | Técnica aplicada | Extract Class + inyección por constructor (`NotificadorReserva`, con constructor por defecto para no romper a `Main`/`LineaBaseRunner`) |
 | Prueba que protege | Las 7 pruebas de caracterización (verifican estado/total sin depender de consola) **más** 2 pruebas nuevas con un spy: `notificaExactamenteUnaVezParaReservaValida()`, `noNotificaCuandoLaReservaEsRechazada()` (`NotificacionServicioReservasTest.java`) |
 | Resultado después | 9/9 pruebas verdes (`docs/evidencia_ae5/01_refactor1_extract_class_notificador.txt`); la notificación ahora es sustituible y observable sin leer consola |
-| Commit | `refactor: extraer notificacion a NotificadorReserva` (pendiente — ver instrucciones de entrega) |
+| Commit | `refactor: extraer notificacion a NotificadorReserva` (`a43e7c3`) |
 
 ## 7. Refactorización 2 · Introducir Value Object (`Correo`)
 
@@ -64,7 +64,7 @@ Las 7 pruebas de caracterización construidas en el Laboratorio 2 (`ServicioRese
 | Técnica aplicada | Introducir Value Object `Correo` (record) con validación propia. Decisión explícita de diseño: el constructor SÍ lanza `IllegalArgumentException` (como pide el ejemplo de la guía), pero `ServicioReservas` solo construye un `Correo` **después** de comprobar `Correo.esValido(...)` — así el contrato observable de `procesar()` no cambia |
 | Prueba que protege | `correoInvalidoNoProcesaReserva()` (sin modificar, sigue verde) **más** 4 pruebas nuevas y aisladas sobre el Value Object: `correoValidoSeAcepta()`, `correoInvalidoLanzaExcepcion()`, `correoNuloLanzaExcepcion()`, `esValidoNoLanzaExcepcionParaCorreoInvalido()` (`CorreoTest.java`) |
 | Resultado después | 13/13 pruebas verdes (`docs/evidencia_ae5/02_refactor2_value_object_correo.txt`) |
-| Commit | `refactor: introducir value object Correo` (pendiente — ver instrucciones de entrega) |
+| Commit | `refactor: introducir value object Correo` (`1878402`) |
 
 ## 8. Refactorización 3 · Agrupar Data Clump (`PeriodoReserva`)
 
@@ -75,7 +75,7 @@ Las 7 pruebas de caracterización construidas en el Laboratorio 2 (`ServicioRese
 | Técnica aplicada | Introducir Value Object `PeriodoReserva` (record) con `esValido()`. Decisión explícita, distinta a la de `Correo`: **no** lanza excepción en el constructor, porque la matriz de riesgo (`docs/04_MATRIZ_RIESGO.md`) marcó ese cambio como Alto — movería la detección del error desde `procesar()` (retorna 0) hacia la construcción del objeto (excepción). `Reserva` tampoco se modifica en este paso |
 | Prueba que protege | `periodoConFinAnteriorNoProcesa()` (sin modificar, sigue verde) **más** 4 pruebas nuevas sobre el Value Object: `periodoConFinPosteriorAInicioEsValido()`, `periodoConFinAnteriorAInicioNoEsValido()`, `periodoConFechasIgualesNoEsValido()`, `periodoConFechasNulasNoEsValido()` (`PeriodoReservaTest.java`) |
 | Resultado después | 17/17 pruebas verdes (`docs/evidencia_ae5/03_refactor3_value_object_periodo.txt`); `Main.java` produce exactamente la misma salida que antes de las tres refactorizaciones (`docs/evidencia_ae5/04_main_end_to_end_sin_cambios.txt`) |
-| Commit | `refactor: agrupar inicio y fin en PeriodoReserva` (pendiente — ver instrucciones de entrega) |
+| Commit | `refactor: agrupar inicio y fin en PeriodoReserva` (`63c3e0d`) |
 
 ## 9. Comparación antes/después
 
