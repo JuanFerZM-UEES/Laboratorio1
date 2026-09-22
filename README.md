@@ -86,6 +86,7 @@ UEES_UCOM0310_Semana6_Lab1_Proyecto_BASE/
 ---
 
 ## Lo que debe hacer
+
 1. Validar el entorno.
 2. Compilar el proyecto.
 3. Ejecutar el código sin modificarlo.
@@ -105,6 +106,7 @@ UEES_UCOM0310_Semana6_Lab1_Proyecto_BASE/
 ---
 
 ## No hace todavía
+
 - Extract Class.
 - Move Method.
 - Introducir Value Objects.

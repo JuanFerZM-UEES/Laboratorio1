@@ -1,0 +1,53 @@
+
+Thanks for using JUnit! Support its development at https://junit.org/sponsoring
+
+Guardando reserva R-NORMAL
+Correo enviado a ana@uees.edu.ec
+Guardando reserva R-VIP
+Correo enviado a vip@uees.edu.ec
+Guardando reserva R-NORMAL
+Correo enviado a ana@uees.edu.ec
+?
+?? JUnit Platform Suite ?
+?? JUnit Jupiter ?
+?  ?? PeriodoReservaTest ?
+?  ?  ?? periodoConFinAnteriorAInicioNoEsValido() ?
+?  ?  ?? periodoConFechasNulasNoEsValido() ?
+?  ?  ?? periodoConFechasIgualesNoEsValido() ?
+?  ?  ?? periodoConFinPosteriorAInicioEsValido() ?
+?  ?? NotificacionServicioReservasTest ?
+?  ?  ?? noNotificaCuandoLaReservaEsRechazada() ?
+?  ?  ?? notificaExactamenteUnaVezParaReservaValida() ?
+?  ?? ServicioReservasTest ?
+?  ?  ?? dosHorasExactasPermitenProcesar() ?
+?  ?  ?? correoInvalidoNoProcesaReserva() ?
+?  ?  ?? periodoConFinAnteriorNoProcesa() ?
+?  ?  ?? reservaNulaRetornaCero() ?
+?  ?  ?? unaHoraNoPermiteProcesar() ?
+?  ?  ?? vipActualmenteRetornaTreintaYCuatro() ?
+?  ?  ?? normalActualmenteRetornaCuarenta() ?
+?  ?? CorreoTest ?
+?     ?? correoNuloLanzaExcepcion() ?
+?     ?? correoInvalidoLanzaExcepcion() ?
+?     ?? esValidoNoLanzaExcepcionParaCorreoInvalido() ?
+?     ?? correoValidoSeAcepta() ?
+?? JUnit Vintage ?
+
+Test run finished after 155 ms
+[         7 containers found      ]
+[         0 containers skipped    ]
+[         7 containers started    ]
+[         0 containers aborted    ]
+[         7 containers successful ]
+[         0 containers failed     ]
+[        17 tests found           ]
+[         0 tests skipped         ]
+[        17 tests started         ]
+[         0 tests aborted         ]
+[        17 tests successful      ]
+[         0 tests failed          ]
+
+
+WARNING: Delegated to the 'execute' command.
+         This behaviour has been deprecated and will be removed in a future release.
+         Please use the 'execute' command directly.
