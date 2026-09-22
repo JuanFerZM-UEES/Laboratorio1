@@ -1,0 +1,55 @@
+
+Thanks for using JUnit! Support its development at https://junit.org/sponsoring
+
+Guardando reserva R-NORMAL
+Correo enviado a ana@uees.edu.ec
+Guardando reserva R-VIP
+Correo enviado a vip@uees.edu.ec
+Guardando reserva R-NORMAL
+Correo enviado a ana@uees.edu.ec
+?
+?? JUnit Platform Suite ?
+?? JUnit Jupiter ?
+?  ?? ServicioReservasTest ?
+?     ?? dosHorasExactasPermitenProcesar() ?
+?     ?? correoInvalidoNoProcesaReserva() ?
+?     ?? periodoConFinAnteriorNoProcesa() ?
+?     ?? reservaNulaRetornaCero() ?
+?     ?? unaHoraNoPermiteProcesar() ?
+?     ?? vipActualmenteRetornaTreintaYCuatro() ? expected: <34.0> but was: <32.0>
+?     ?? normalActualmenteRetornaCuarenta() ?
+?? JUnit Vintage ?
+
+Failures (1):
+  JUnit Jupiter:ServicioReservasTest:vipActualmenteRetornaTreintaYCuatro()
+    MethodSource [className = 'edu.uees.refactor.service.ServicioReservasTest', methodName = 'vipActualmenteRetornaTreintaYCuatro', methodParameterTypes = '']
+    => org.opentest4j.AssertionFailedError: expected: <34.0> but was: <32.0>
+       org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+       org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+       org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:86)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:81)
+       org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1014)
+       edu.uees.refactor.service.ServicioReservasTest.vipActualmenteRetornaTreintaYCuatro(ServicioReservasTest.java:60)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+Test run finished after 135 ms
+[         4 containers found      ]
+[         0 containers skipped    ]
+[         4 containers started    ]
+[         0 containers aborted    ]
+[         4 containers successful ]
+[         0 containers failed     ]
+[         7 tests found           ]
+[         0 tests skipped         ]
+[         7 tests started         ]
+[         0 tests aborted         ]
+[         6 tests successful      ]
+[         1 tests failed          ]
+
+
+WARNING: Delegated to the 'execute' command.
+         This behaviour has been deprecated and will be removed in a future release.
+         Please use the 'execute' command directly.

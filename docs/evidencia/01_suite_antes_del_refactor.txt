@@ -1,0 +1,40 @@
+
+Thanks for using JUnit! Support its development at https://junit.org/sponsoring
+
+Guardando reserva R-NORMAL
+Correo enviado a ana@uees.edu.ec
+Guardando reserva R-VIP
+Correo enviado a vip@uees.edu.ec
+Guardando reserva R-NORMAL
+Correo enviado a ana@uees.edu.ec
+?
+?? JUnit Platform Suite ?
+?? JUnit Jupiter ?
+?  ?? ServicioReservasTest ?
+?     ?? dosHorasExactasPermitenProcesar() ?
+?     ?? correoInvalidoNoProcesaReserva() ?
+?     ?? periodoConFinAnteriorNoProcesa() ?
+?     ?? reservaNulaRetornaCero() ?
+?     ?? unaHoraNoPermiteProcesar() ?
+?     ?? vipActualmenteRetornaTreintaYCuatro() ?
+?     ?? normalActualmenteRetornaCuarenta() ?
+?? JUnit Vintage ?
+
+Test run finished after 132 ms
+[         4 containers found      ]
+[         0 containers skipped    ]
+[         4 containers started    ]
+[         0 containers aborted    ]
+[         4 containers successful ]
+[         0 containers failed     ]
+[         7 tests found           ]
+[         0 tests skipped         ]
+[         7 tests started         ]
+[         0 tests aborted         ]
+[         7 tests successful      ]
+[         0 tests failed          ]
+
+
+WARNING: Delegated to the 'execute' command.
+         This behaviour has been deprecated and will be removed in a future release.
+         Please use the 'execute' command directly.
