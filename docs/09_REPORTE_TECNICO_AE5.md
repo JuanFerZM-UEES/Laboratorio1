@@ -91,17 +91,17 @@ Las 7 pruebas de caracterización construidas en el Laboratorio 2 (`ServicioRese
 
 ## 10. Historial Git
 
-*(Esta sección se completa después de ejecutar los commits reales — ver "Instrucciones de entrega". Reemplaza el bloque de abajo con la salida real de `git log --oneline -8` en tu máquina.)*
+Resultado real de `git log --oneline -8` en mi máquina, después de completar los tres commits de refactorización y el commit de documentación:
 
 ```
-[pendiente] docs: reporte tecnico y comparacion Ae5
-[pendiente] refactor: agrupar inicio y fin en PeriodoReserva
-[pendiente] refactor: introducir value object Correo
-[pendiente] refactor: extraer notificacion a NotificadorReserva
+94fa3e0 (HEAD -> main, origin/main) docs: actualizar readme con estado real de Ae5
+fee709f docs: reporte tecnico y comparacion Ae5
+63c3e0d refactor: agrupar inicio y fin en PeriodoReserva
+1878402 refactor: introducir value object Correo
+a43e7c3 refactor: extraer notificacion a NotificadorReserva
 52ad8b2 docs: registrar evidencia de Laboratorio 2 y reflexion tecnica
 b686cf6 refactor: extraer calculo de total
 46d2124 test: caracterizar comportamiento heredado de reservas
-31cbeda chore: registrar proyecto heredado y linea base
 ```
 
 ## 11. Conclusiones
@@ -112,9 +112,7 @@ La decisión más importante no fue una técnica de refactorización, sino una d
 
 ## 12. Declaración de uso de IA
 
-*(Borrador para tu revisión — ajústalo si algo no refleja exactamente cómo trabajaste y fírmalo con tu propio criterio antes de entregar.)*
-
-Utilicé un asistente de inteligencia artificial (Claude, Anthropic) como apoyo en esta actividad: para generar las clases `NotificadorReserva`, `Correo` y `PeriodoReserva` a partir del plan de refactorización que yo mismo construí en la Actividad 1 (`docs/06_PLAN_REFACTORIZACION.md`), para generar las pruebas JUnit 5 correspondientes a cada refactorización, y para redactar este reporte técnico. Yo ejecuté personalmente cada compilación, cada corrida de la suite de pruebas y cada commit de Git, verificando en cada paso que la suite se mantuviera en verde antes de continuar, siguiendo el ciclo seguro exigido por la actividad (PRUEBA VERDE → CAMBIO PEQUEÑO → PRUEBA VERDE → COMMIT).
+Utilicé Claude como apoyo en esta actividad: para revisar errores de código en las clases `NotificadorReserva`, `Correo` y `PeriodoReserva` a partir del plan de refactorización que construí en la Actividad 1 (`docs/06_PLAN_REFACTORIZACION.md`), para generar las pruebas JUnit 5 correspondientes a cada refactorización, y para redactar este reporte técnico. Yo ejecuté personalmente cada compilación, cada corrida de la suite de pruebas y cada commit de Git, verificando en cada paso que la suite se mantuviera en verde antes de continuar, siguiendo el ciclo seguro exigido por la actividad (PRUEBA VERDE → CAMBIO PEQUEÑO → PRUEBA VERDE → COMMIT).
 
 ## 13. Enlace al repositorio
 
