@@ -3,11 +3,15 @@ package edu.uees.refactor.service;
 import edu.uees.refactor.domain.Reserva;
 
 /**
- * Código heredado intencional para el Laboratorio 1.
+ * Código heredado intencional (Laboratorio 1 y 2).
  *
  * IMPORTANTE:
- * No refactorizar antes de completar la línea base,
- * el diagnóstico y el plan de refactorización.
+ * Solo se aplicó la micro-refactorización protegida y autorizada
+ * por el Laboratorio 2 (Extract Method de {@link #calcularTotal},
+ * sección 18 de la guía), respaldada por la suite de
+ * {@code ServicioReservasTest}. El resto de la estructura se deja
+ * intacta a propósito para Ae5, según el plan priorizado en
+ * {@code docs/06_PLAN_REFACTORIZACION.md}.
  */
 public class ServicioReservas {
 
@@ -34,11 +38,7 @@ public class ServicioReservas {
             return 0;
         }
 
-        double total = 40;
-
-        if ("VIP".equals(r.getTipo())) {
-            total = total * 0.85;
-        }
+        double total = calcularTotal(r);
 
         System.out.println(
                 "Guardando reserva " + r.getId()
@@ -49,6 +49,16 @@ public class ServicioReservas {
         );
 
         r.confirmar();
+
+        return total;
+    }
+
+    private double calcularTotal(Reserva r) {
+        double total = 40;
+
+        if ("VIP".equals(r.getTipo())) {
+            return total * 0.85;
+        }
 
         return total;
     }
