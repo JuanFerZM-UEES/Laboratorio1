@@ -1,19 +1,36 @@
 package edu.uees.refactor.service;
 
+import edu.uees.refactor.domain.Correo;
+import edu.uees.refactor.domain.PeriodoReserva;
 import edu.uees.refactor.domain.Reserva;
 
 /**
- * Código heredado intencional (Laboratorio 1 y 2).
+ * Código heredado intencional (Laboratorio 1 y 2), en proceso de
+ * refactorización controlada para Ae5.
  *
- * IMPORTANTE:
- * Solo se aplicó la micro-refactorización protegida y autorizada
- * por el Laboratorio 2 (Extract Method de {@link #calcularTotal},
- * sección 18 de la guía), respaldada por la suite de
- * {@code ServicioReservasTest}. El resto de la estructura se deja
- * intacta a propósito para Ae5, según el plan priorizado en
- * {@code docs/06_PLAN_REFACTORIZACION.md}.
+ * Historial:
+ * - Laboratorio 2: Extract Method de {@link #calcularTotal}.
+ * - Ae5 · Refactorización 1: Extract Class de la notificación hacia
+ *   {@link NotificadorReserva}.
+ * - Ae5 · Refactorización 2: Value Object {@link Correo} para validar
+ *   el correo.
+ * - Ae5 · Refactorización 3: Value Object {@link PeriodoReserva} para
+ *   agrupar inicio/fin (este cambio).
+ *
+ * Cada paso está respaldado por la suite de {@code ServicioReservasTest}
+ * y sigue el plan priorizado en {@code docs/06_PLAN_REFACTORIZACION.md}.
  */
 public class ServicioReservas {
+
+    private final NotificadorReserva notificador;
+
+    public ServicioReservas() {
+        this(new NotificadorReserva());
+    }
+
+    public ServicioReservas(NotificadorReserva notificador) {
+        this.notificador = notificador;
+    }
 
     public double procesar(
             Reserva r,
@@ -23,14 +40,15 @@ public class ServicioReservas {
             return 0;
         }
 
-        if (r.getCorreo() == null
-                || !r.getCorreo().contains("@")) {
+        if (!Correo.esValido(r.getCorreo())) {
             return 0;
         }
 
-        if (r.getInicio() == null
-                || r.getFin() == null
-                || !r.getFin().isAfter(r.getInicio())) {
+        PeriodoReserva periodo = new PeriodoReserva(
+                r.getInicio(), r.getFin()
+        );
+
+        if (!periodo.esValido()) {
             return 0;
         }
 
@@ -40,13 +58,7 @@ public class ServicioReservas {
 
         double total = calcularTotal(r);
 
-        System.out.println(
-                "Guardando reserva " + r.getId()
-        );
-
-        System.out.println(
-                "Correo enviado a " + r.getCorreo()
-        );
+        notificador.notificar(r);
 
         r.confirmar();
 
