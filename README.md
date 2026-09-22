@@ -1,20 +1,18 @@
 # UEES | Diseño de Software | UCOM0310
-## Semana 6 | Laboratorio evaluado 1
-### Diagnóstico técnico de código heredado
+## Semana 6 | Actividad 1, Laboratorio 2 y Ae5
+### De diagnóstico a refactorización respaldada por pruebas
 
-Este es el **proyecto base** para desarrollar la actividad:
+Este repositorio contiene la secuencia completa de la Semana 6:
 
-**Actividad 1 | Diagnóstico de código heredado**
-
-La actividad consiste en **comprender, observar, evidenciar y diagnosticar** el código antes de realizar cualquier refactorización estructural.
-
-> **Regla del laboratorio:** durante el Laboratorio 1 NO debes refactorizar todavía.
+1. **Actividad 1** — Diagnóstico de código heredado (`docs/01`–`07`).
+2. **Laboratorio 2** — Red de seguridad con JUnit 5 y la primera refactorización protegida (`docs/08`, `docs/evidencia/`).
+3. **Ae5** — Refactorización integradora respaldada por pruebas: 3 refactorizaciones de mayor alcance (`docs/09`, `docs/10`, `docs/evidencia_ae5/`).
 
 ---
 
 ## Requisitos
 
-- Java 21
+- **Java 17** (el proyecto usa `maven.compiler.source/target=17`)
 - Maven
 - Git
 - IDE de preferencia: STS, IntelliJ IDEA, Eclipse o VS Code
@@ -35,21 +33,27 @@ git --version
 mvn clean compile
 ```
 
-Debes obtener:
-
-```text
-BUILD SUCCESS
-```
+Debes obtener `BUILD SUCCESS`.
 
 ---
 
-## Ejecutar
+## Ejecutar las pruebas
+
+```bash
+mvn clean test
+```
+
+Al día de hoy la suite tiene **17 pruebas**, todas verdes: las 7 originales de caracterización (`ServicioReservasTest`) sin modificar desde el Laboratorio 2, más 10 nuevas agregadas durante Ae5 (`NotificacionServicioReservasTest`, `CorreoTest`, `PeriodoReservaTest`).
+
+---
+
+## Ejecutar la demo
 
 ```bash
 mvn exec:java -Dexec.mainClass="edu.uees.refactor.app.Main"
 ```
 
-La salida inicial esperada para el caso VIP es:
+La salida esperada (idéntica antes y después de las tres refactorizaciones de Ae5):
 
 ```text
 Guardando reserva R-001
@@ -58,75 +62,56 @@ Estado: CONFIRMADA
 Total: 34.0
 ```
 
-Si obtienes una salida diferente, registra la evidencia real.
-
 ---
 
 ## Estructura
 
 ```text
-UEES_UCOM0310_Semana6_Lab1_Proyecto_BASE/
+.
 ├── pom.xml
 ├── README.md
 ├── src/main/java/edu/uees/refactor/
 │   ├── app/Main.java
+│   ├── app/LineaBaseRunner.java
 │   ├── domain/EstadoReserva.java
 │   ├── domain/Reserva.java
-│   └── service/ServicioReservas.java
+│   ├── domain/Correo.java              (Ae5 · Value Object)
+│   ├── domain/PeriodoReserva.java      (Ae5 · Value Object)
+│   └── service/
+│       ├── ServicioReservas.java
+│       └── NotificadorReserva.java     (Ae5 · Extract Class)
+├── src/test/java/edu/uees/refactor/
+│   ├── service/ServicioReservasTest.java              (Laboratorio 2)
+│   ├── service/NotificacionServicioReservasTest.java  (Ae5)
+│   ├── domain/CorreoTest.java                         (Ae5)
+│   └── domain/PeriodoReservaTest.java                 (Ae5)
 └── docs/
-    ├── 01_LINEA_BASE.md
-    ├── 02_MAPA_RESPONSABILIDADES.md
-    ├── 03_MATRIZ_DIAGNOSTICO.md
-    ├── 04_MATRIZ_RIESGO.md
-    ├── 05_PRUEBAS_PROPUESTAS.md
-    ├── 06_PLAN_REFACTORIZACION.md
-    └── 07_REFLEXION_TECNICA.md
+    ├── 01_LINEA_BASE.md … 07_REFLEXION_TECNICA.md      (Actividad 1)
+    ├── 08_REFLEXION_LABORATORIO2.md                    (Laboratorio 2)
+    ├── evidencia/                                       (Laboratorio 2)
+    ├── 09_REPORTE_TECNICO_AE5.md                        (Ae5)
+    ├── 10_PREGUNTAS_DEFENSA_AE5.md                       (Ae5)
+    └── evidencia_ae5/                                    (Ae5)
 ```
 
 ---
 
-## Lo que debe hacer
+## Refactorizaciones aplicadas en Ae5
 
-1. Validar el entorno.
-2. Compilar el proyecto.
-3. Ejecutar el código sin modificarlo.
-4. Registrar la salida.
-5. Construir seis escenarios de línea base.
-6. Identificar responsabilidades actuales.
-7. Diagnosticar problemas de clases.
-8. Diagnosticar problemas de datos.
-9. Diagnosticar condicionales.
-10. Evaluar testabilidad.
-11. Completar la matriz de diagnóstico.
-12. Completar la matriz de riesgo.
-13. Proponer pruebas antes de modificar.
-14. Priorizar el plan de refactorización.
-15. Registrar el estado inicial en Git.
+1. **Extract Class** — la notificación (antes dos `System.out.println` inline) se movió a `NotificadorReserva`, inyectable por constructor.
+2. **Introducir Value Object** — `Correo` centraliza la regla de validación del correo, antes duplicada como expresión inline.
+3. **Agrupar Data Clump** — `PeriodoReserva` agrupa `inicio`/`fin`, que siempre viajaban juntos.
 
----
+Detalle completo, justificación y evidencia real de cada una: `docs/09_REPORTE_TECNICO_AE5.md`.
 
-## No hace todavía
-
-- Extract Class.
-- Move Method.
-- Introducir Value Objects.
-- Simplificar condicionales.
-- Aplicar Strategy.
-- Cambiar reglas funcionales.
-- Implementar mocks.
-
-Estas acciones se realizarán posteriormente, una vez construida la red de seguridad.
+**Deliberadamente fuera de alcance:** mover `PeriodoReserva` al constructor de `Reserva` con validación que lanza excepción — identificado como riesgo Alto en `docs/04_MATRIZ_RIESGO.md` porque cambiaría el contrato observable actual. Queda documentado como trabajo futuro.
 
 ---
 
 ## Git
 
-Al finalizar el diagnóstico:
+Historial esperado (ciclo seguro: PRUEBA VERDE → CAMBIO PEQUEÑO → PRUEBA VERDE → COMMIT):
 
 ```bash
-git init
-git add .
-git commit -m "chore: registrar proyecto heredado y linea base"
+git log --oneline -10
 ```
-
-> **¿Qué hace el código, dónde están sus riesgos y qué pruebas necesito antes de cambiarlo?**
